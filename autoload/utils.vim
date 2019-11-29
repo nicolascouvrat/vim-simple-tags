@@ -34,6 +34,11 @@ function! utils#EchoWarning(msg)
   call s:echo(a:msg, 'WarningMsg')
 endfunction
 
+" GetTagFile returns the directory in which the tag file should be.
+function! utils#GetTagFile()
+  return utils#GetTagDir() . "/" . config#TagFile()
+endfunction
+
 " GetTagDir returns the directory in which the tag file should be.
 function! utils#GetTagDir()
   if config#UseGitRoot() == 1

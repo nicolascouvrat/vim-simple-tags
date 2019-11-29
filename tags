@@ -1,0 +1,19 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CreateTags	plugin/simpletags.vim	/^  command! -nargs=0 CreateTags call simpletags#CreateTags()$/;"	c
+UpdateTags	plugin/simpletags.vim	/^  command! -nargs=0 UpdateTags call simpletags#UpdateTags()$/;"	c
+config#TagFile	autoload/config.vim	/^function! config#TagFile()$/;"	f
+config#UseGitRoot	autoload/config.vim	/^function! config#UseGitRoot()$/;"	f
+echo	autoload/utils.vim	/^function! s:echo(msg, hi)$/;"	f
+simpletags#CreateTags	autoload/simpletags.vim	/^function! simpletags#CreateTags()$/;"	f
+simpletags#UpdateTags	autoload/simpletags.vim	/^function! simpletags#UpdateTags()$/;"	f
+trim_output	autoload/utils.vim	/^function! s:trim_output(o)$/;"	f
+utils#EchoError	autoload/utils.vim	/^function! utils#EchoError(msg)$/;"	f
+utils#EchoSuccess	autoload/utils.vim	/^function! utils#EchoSuccess(msg)$/;"	f
+utils#EchoWarning	autoload/utils.vim	/^function! utils#EchoWarning(msg)$/;"	f
+utils#GetTagDir	autoload/utils.vim	/^function! utils#GetTagDir()$/;"	f
+utils#GetTagFile	autoload/utils.vim	/^function! utils#GetTagFile()$/;"	f
