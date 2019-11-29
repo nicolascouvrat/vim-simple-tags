@@ -8,4 +8,7 @@ if executable('ctags')
   " UpdateTags for the current file, removing all tags for it in the main tag file
   " before generating them again
   command! -nargs=0 UpdateTags call simpletags#UpdateTags()
+
+  " ClearTags removes the current tag file
+  command! -nargs=0 ClearTags call simpletags#ClearTags()
 endif

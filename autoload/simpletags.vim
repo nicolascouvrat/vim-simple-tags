@@ -12,3 +12,7 @@ endfunction
 function! simpletags#UpdateTags()
   call utils#EchoSuccess("Update Tags")
 endfunction
+
+function! simpletags#ClearTags()
+  call utils#EchoSuccess("Tags cleared")
+endfunction
