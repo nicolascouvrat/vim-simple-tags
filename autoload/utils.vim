@@ -48,10 +48,11 @@ function! utils#GetTagDir()
   return getcwd()
 endfunction
 
-" trim_output removes trailing newlines, which is useful for a lot of commands
+" trim_output removes null bytes, sometimes appearing at the end of console outputs
 "
 " Args:
 "   o (str): the output to trim
 function! s:trim_output(o)
-  return substitute(a:o, "/\v\n$", "", "")
+  " In replace, \n is a null byte, see https://vim.fandom.com/wiki/Search_and_replace
+  return substitute(a:o, "\n", "", "")
 endfunction
