@@ -1,6 +1,6 @@
 if executable('ctags')
-  " Look for tags file in parent file as well
-  set tags=tags;
+  " Look for tags file
+  execute "set tags=" . utils#GetTagFile()
 
   " CreateTags creates a tag file at the root of the project
   command! -nargs=0 CreateTags call simpletags#CreateTags()
