@@ -1,12 +1,7 @@
 " CreateTags runs ctags in the current directory and creates a tag file
 function! simpletags#CreateTags()
   let cmd = "ctags -f " . config#TagFile() . " -R " . utils#GetTagDir()
-  let ret = system(cmd)
-  if v:shell_error != 0
-    call utils#EchoError("Could not create tags: " . ret)
-    return
-  endif
-  call utils#EchoSuccess("Tags created")
+  call utils#CallAndReport(cmd, "Tags created", "Could not create tags")
 endfunction
 
 function! simpletags#UpdateTags()
@@ -14,5 +9,7 @@ function! simpletags#UpdateTags()
 endfunction
 
 function! simpletags#ClearTags()
-  call utils#EchoSuccess("Tags cleared")
+  let cmd = "rm " . config#TagFile()
+  call utils#CallAndReport(cmd, "Tags cleared", "Could not clear tags")
 endfunction
+

@@ -61,3 +61,19 @@ function! s:trim_output(o)
   " In replace, \n is a null byte, see https://vim.fandom.com/wiki/Search_and_replace
   return substitute(a:o, "\n", "", "")
 endfunction
+
+" CallAndReport executes cmd, and prints a success or error message depending on execution
+"
+" Args:
+"   cmd (str): the command to execute
+"   successMsg (str): will be printed in case of success
+"   errorPrefix (str): will be printed along with the text returned by the shell if error
+function! utils#CallAndReport(cmd, successMsg, errorPrefix)
+  let ret = system(a:cmd)
+  if v:shell_error != 0
+    call utils#EchoError(a:errorPrefix . ": " . ret)
+    return
+  endif
+
+  call utils#EchoSuccess(a:successMsg)
+endfunction
