@@ -1,5 +1,7 @@
 if executable('ctags')
   " Look for tags file
+  " TODO: this is ugly, as it triggers an error message when opening out of a repo. Instead make
+  " this setup be run on create tags? or setup?
   execute "set tags=" . utils#GetTagFile()
 
   " CreateTags creates a tag file at the root of the project
