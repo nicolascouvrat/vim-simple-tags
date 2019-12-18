@@ -1,3 +1,10 @@
+" Look for tags file
+" This should only be ran once when this file is first autoloaded
+" This is necessary because the for example if .vimrc defines:
+"     g:simpletags_tag_file = derp
+" But forgets to set tags accordingly, this will cover up
+execute "set tags+=" . utils#GetTagFile()
+
 " CreateTags runs ctags in the current directory and creates a tag file
 function! simpletags#CreateTags()
   let cmd = "ctags -f " . utils#GetTagFile() . " -R " . utils#GetTagDir()

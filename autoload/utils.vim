@@ -1,3 +1,6 @@
+" It is enough to load the tag directory once, refering to this variable after
+let s:tagDir = ""
+
 " echo msg with the color given by the highlight group hi
 "
 " Args:
@@ -40,17 +43,24 @@ function! utils#GetTagFile()
 endfunction
 
 " GetTagDir returns the directory in which the tag file should be.
+" It will cache the value and use this cache if possible
 function! utils#GetTagDir()
+  if s:tagDir !=# ""
+    " if the value is cached, return it
+    return s:tagDir
+  endif
+
   if config#UseGitRoot() == 1
-    let root = s:trim_output(system("git rev-parse --show-toplevel"))
+    let s:tagDir = s:trim_output(system("git rev-parse --show-toplevel"))
     if v:shell_error == 0
-      return root
+      return s:tagDir
     endif
 
-    call utils#EchoWarning("Could not use git root, reason: " . root . "(defaulting to cwd)")
+    call utils#EchoWarning("Could not use git root, using cwd instead. Reason: " . s:tagDir)
   endif
   " default is to create in the cwd
-  return getcwd()
+  let s:tagDir = getcwd()
+  return s:tagDir
 endfunction
 
 " trim_output removes null bytes, sometimes appearing at the end of console outputs
